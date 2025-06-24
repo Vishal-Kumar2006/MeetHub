@@ -46,7 +46,7 @@ const start = async () => {
 
   // console.log(`Mongo Connected DB HOST ${connectionDB.connection.host}`);
   server.listen(app.get("port"), () => {
-    console.log("App is listing at port 8000");
+    console.log(`App is listing at port http://localhost:${app.get("port")}`);
   });
 };
 
