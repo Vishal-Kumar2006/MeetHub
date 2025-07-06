@@ -1,0 +1,38 @@
+.navbar {
+    background: #aebbff95;
+    display: flex;
+    justify-content: space-between;
+    height: 3.5rem;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    backdrop-filter: blur(8px);
+    z-index: 1000;
+}
+
+.navbar h3 {
+    font-size: 2.1rem;
+}
+
+.navbar-links {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.meetContainer {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: space-evenly;
+}
+
+.leftPanel {
+    justify-content: center;
+    margin: 2rem;
+}
+
+.rightPanel {
+    width: 50%;
+    justify-content: center;
+}
