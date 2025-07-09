@@ -3,9 +3,12 @@ import { createServer } from "node:http";
 import { Server } from "socket.io";
 import mongoose from "mongoose";
 import cors from "cors";
+import dotenv from 'dotenv';
 
 import { connectToSocket } from "./controllers/socketManager.js";
 import userRoutes from "./routes/users.route.js";
+
+dotenv.config();
 
 const app = express();
 const server = createServer(app);
@@ -35,7 +38,7 @@ app.use("/api/v1/user", userRoutes);
 const start = async () => {
   const connectionDB = mongoose
     .connect(
-      "mongodb+srv://vishalkumar438455:u7kzmQ142DBvX4g2@cluster0.9lpawmy.mongodb.net/",
+      process.env.mongoDB_URL,
       {
         useNewUrlParser: true,
         useUnifiedTopology: true,
@@ -51,3 +54,4 @@ const start = async () => {
 };
 
 start();
+// console.log(process.env.mongoDB_URL);
