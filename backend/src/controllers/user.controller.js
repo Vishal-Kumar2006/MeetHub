@@ -96,15 +96,15 @@ const addToHistory = async (req, res) => {
 
   try {
     const user = await User.findOne({token:token});
-
+    
     const newMeeting = new Meeting({
       user_id: user.username,
-      meetingCode: meeting_code
+      meeting_id: meeting_code
     })
 
-    await newMeeting.save();
 
-    res.status(201).json({message:"Added code to history"});
+    await newMeeting.save()
+    res.status(201).json({message:"Added meeting to history"});
 
   } catch(e) {
     res.json({message:`Something went wrong ${e}`});

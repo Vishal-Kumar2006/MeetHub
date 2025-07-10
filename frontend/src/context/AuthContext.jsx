@@ -1,12 +1,13 @@
 import { Children, createContext, useContext, useState } from "react";
 import axios, { HttpStatusCode } from 'axios';
 import { useNavigate } from "react-router-dom";
+import server from "../enviroment";
 
 
 export const AuthContext = createContext({});
 
 const client = axios.create({
-    baseURL:"http://localhost:8000/api/v1/user"
+    baseURL:`${server}/api/v1/user`
 })
 
 export const AuthProvider = ({ children }) => {
@@ -71,14 +72,14 @@ export const AuthProvider = ({ children }) => {
                 token:localStorage.getItem("token"),
                 meeting_code:meetingCode
             });
+            
+            console.log("meeting Saved");
 
             return await req;
         } catch (error) {
             throw e;
         }
     }
-
-
 
 
     const data = {

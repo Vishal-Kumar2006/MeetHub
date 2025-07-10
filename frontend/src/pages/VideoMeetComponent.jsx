@@ -12,6 +12,7 @@ import ScreenShareIcon from "@mui/icons-material/ScreenShare";
 import StopScreenShareIcon from "@mui/icons-material/StopScreenShare";
 import ChatIcon from "@mui/icons-material/Chat";
 import server from "../enviroment";
+import { AuthContext } from "../context/AuthContext";
 
 const server_url = server;
 
@@ -22,6 +23,7 @@ const peerConfigConnections = {
 };
 
 export default function VideoMeetComponent() {
+  const { addToUserHistory } = React.useContext(AuthContext);
   var socketRef = useRef();
   let socketIdRef = useRef();
 
@@ -323,6 +325,9 @@ export default function VideoMeetComponent() {
     // Socket connected successfully
     socketRef.current.on("connect", () => {
       console.log("✅ Connected to socket server:", socketRef.current.id);
+      console.log(socketRef.current.id);
+      // Now add it in History
+      addToUserHistory(socketRef.current.id);
 
       // Emit join-call event with current URL
       socketRef.current.emit("join-call", window.location.href);
@@ -515,8 +520,6 @@ export default function VideoMeetComponent() {
     setAskForUsername(false);
     getMedia();
   };
-
-  
 
   const chatRef = useRef(null);
 
