@@ -29,6 +29,10 @@ app.use(
   })
 );
 
+app.get("/", (req, res) => {
+  res.send("Root Directory..!!!");
+})
+
 app.get("/home", (req, res) => {
   return res.json({ hello: "world" });
 });
